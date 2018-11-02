@@ -1,5 +1,6 @@
-package Items.Food;
+/*package Items.Food;
 
+import Items.Food.consume;
 import People.Person;
 
 public class Apple implements consume {
@@ -11,3 +12,4 @@ public class Apple implements consume {
         p.gainStatus(sated);
     }
 }
+*/

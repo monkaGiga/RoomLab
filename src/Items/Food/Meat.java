@@ -1,4 +1,4 @@
-package Items.Food;
+/*package Items.Food;
 
 public class Meat implements consume{
     @Override
@@ -7,4 +7,4 @@ public class Meat implements consume{
         p.loseSpeed(2);
         p.gainStatus(Full);
     }
-}
+}*/
