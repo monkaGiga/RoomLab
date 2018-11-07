@@ -32,9 +32,4 @@ public class Person {
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
 	}
-	public int getHealth(int hp){
-
-	}
-
-
 }

@@ -5,6 +5,7 @@ import Rooms.Death;
 import Rooms.Room;
 import Rooms.IRoom;
 import Rooms.WinningRoom;
+import Rooms.Board;
 
 
 import java.util.Scanner;
@@ -30,7 +31,7 @@ public class Runner {
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
-		building[x][y] = new WinningRoom(x, y);
+		building[0][1] = new WinningRoom(0, 1);
 		//Create a room where you die
 		int x1 = (int)(Math.random()*building.length);
 		int y1 = (int)(Math.random()*building.length);
@@ -129,7 +130,33 @@ public class Runner {
 	{
 		gameOn = false;
 	}
-	
+	public static void newMap(Person peo)
+	{
+		Room[][] building = new Room[5][5];
+
+		//Fill the building with normal rooms
+		for (int x = 0; x<building.length; x++)
+		{
+			for (int y = 0; y < building[x].length; y++)
+			{
+				building[x][y] = new Room(x,y);
+			}
+		}
+
+		//Create a random winning room.
+		int x = (int)(Math.random()*building.length);
+		int y = (int)(Math.random()*building.length);
+		building[x][y] = new WinningRoom(x, y);
+		//Create a room where you die
+		int x1 = (int)(Math.random()*building.length);
+		int y1 = (int)(Math.random()*building.length);
+		building[x1][y1] = new Death(x1, y1);
+		int x2 = (int)(Math.random()*building.length);
+		int y2 = (int)(Math.random()*building.length);
+		building[x2][y2] = new IRoom(x2, y2);
+		building[0][0].enterRoom(peo);
+
+	}
 
 
 }
