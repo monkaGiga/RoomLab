@@ -8,7 +8,6 @@ public class Person {
 	String familyName;
 	int xLoc, yLoc;
 
-	int att = (int)(Math.random()*10);
 	public int getxLoc() {
 		return xLoc;
 	}

@@ -5,7 +5,6 @@ import Rooms.Death;
 import Rooms.Room;
 import Rooms.IRoom;
 import Rooms.WinningRoom;
-import Rooms.Board;
 
 
 import java.util.Scanner;
@@ -42,6 +41,7 @@ public class Runner {
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
+		System.out.println("Welcome to the Never Ending Cave");
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
