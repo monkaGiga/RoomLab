@@ -155,7 +155,10 @@ public class Runner {
 		int y2 = (int)(Math.random()*building.length);
 		building[x2][y2] = new IRoom(x2, y2);
 		building[0][0].enterRoom(peo);
-
+		//make a chance there will be instadeath room, not 100%
+		//if not instadeath guess make it a 1/3 death room,
+		//player guesses rgb buttons and if you press the wrong button
+		//you die with torch on map it is disguised as a item room because it has idol
 	}
 
 
