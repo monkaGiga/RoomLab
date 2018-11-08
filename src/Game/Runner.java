@@ -37,13 +37,13 @@ public class Runner {
 		if(droom >= 9) {
 			 x1 = (int) (Math.random() * building.length);
 			 y1 = (int) (Math.random() * building.length);
-			building[1][0] = new Death(1, 0);
+			building[x1][y1] = new Death(x1, y1);
 		}
 		else
 		{
 			 x1 = (int) (Math.random() * building.length);
 			 y1 = (int) (Math.random() * building.length);
-			building[1][0] = new Trap(1, 0);
+			building[x1][y1] = new Trap(x1, y1);
 		}
 		int x2 = (int)(Math.random()*building.length);
 		int y2 = (int)(Math.random()*building.length);
