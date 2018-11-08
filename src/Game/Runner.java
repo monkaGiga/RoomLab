@@ -5,6 +5,7 @@ import Rooms.Death;
 import Rooms.Room;
 import Rooms.IRoom;
 import Rooms.WinningRoom;
+import Rooms.Trap;
 
 
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class Runner {
 	
 
 	private static boolean gameOn = true;
-	
+	static int x1,y1;
 	public static void main(String[] args)
 	{
 		Room[][] building = new Room[5][5];
@@ -32,9 +33,18 @@ public class Runner {
 		int y = (int)(Math.random()*building.length);
 		building[0][1] = new WinningRoom(0, 1);
 		//Create a room where you die
-		int x1 = (int)(Math.random()*building.length);
-		int y1 = (int)(Math.random()*building.length);
-		building[x1][y1] = new Death(x1, y1);
+		double droom = (Math.random()*10);
+		if(droom >= 9) {
+			 x1 = (int) (Math.random() * building.length);
+			 y1 = (int) (Math.random() * building.length);
+			building[1][0] = new Death(1, 0);
+		}
+		else
+		{
+			 x1 = (int) (Math.random() * building.length);
+			 y1 = (int) (Math.random() * building.length);
+			building[1][0] = new Trap(1, 0);
+		}
 		int x2 = (int)(Math.random()*building.length);
 		int y2 = (int)(Math.random()*building.length);
 		building[x2][y2] = new IRoom(x2, y2);
@@ -46,15 +56,95 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			System.out.println("Where would you like to move? (Choose W, A, S, D)");
-			String move = in.nextLine();
-			if(validMove(move, player1, building))
+			if (player1.trapCheck == true)
 			{
-				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
-				
+
+				System.out.println("You enter a trapped room, the doorway behind you shuts");
+				System.out.println("You see three idols in front of you, a plaque reads");
+				System.out.println("PICK ONE(1,2,3)");
+				int guess = in.nextInt();
+
+				int traCount = (int)(Math.random()*3);
+				if (traCount == 0) {
+
+					int death = 1;
+					int none = 2;
+					int points = 3;
+
+					if (guess == death) {
+						System.out.println("As you pick up the idol you hear clicks, the last thing you see is the ceiling falling");
+						Runner.gameOff();
+
+
+					}
+					if (guess == none) {
+						System.out.println("As you pick it up all the idols crumble into dust and the doorway reopens");
+						player1.trapCheck = false;
+						building[x1][y1] = new Room(x1,y1);
+
+					}
+					if (guess == points) {
+						System.out.println("As you pick it up the other 2 idols crumble, you decide to keep this idol because it is shiny");
+						player1.trapCheck = false;
+						building[x1][y1] = new Room(x1,y1);
+
+					}
+				}
+				if (traCount == 1) {
+					int death = 3;
+					int none = 1;
+					int points = 2;
+
+					if (guess == death) {
+						System.out.println("As you pick up the idol you hear clicks, the last thing you see is the ceiling falling");
+						Runner.gameOff();
+
+					}
+					if (guess == none) {
+						System.out.println("All the idols crumble into dust and the doorway reopens");
+						player1.trapCheck = false;
+						building[x1][y1] = new Room(x1,y1);
+
+					}
+					if (guess == points) {
+						System.out.println("As you pick it up the other 2 idols crumble, you decide to keep this idol because it is shiny");
+						player1.trapCheck = false;
+						building[x1][y1] = new Room(x1,y1);
+
+					}
+				}
+				if (traCount == 2) {
+					int death = 2;
+					int none = 3;
+					int points = 1;
+
+					if (guess == death) {
+						System.out.println("As you pick up the idol you hear clicks, the last thing you see is the ceiling falling");
+						Runner.gameOff();
+
+					}
+					if (guess == none) {
+						System.out.println("All the idols crumble into dust and the doorway reopens");
+						player1.trapCheck = false;
+						building[x1][y1] = new Room(x1,y1);
+
+					}
+					if (guess == points) {
+						System.out.println("As you pick it up the other 2 idols crumble, you decide to keep this idol because it is shiny");
+						player1.trapCheck = false;
+						building[x1][y1] = new Room(x1,y1);
+					}
+				}
 			}
 			else {
-				System.out.println("Please choose a valid move.");
+				System.out.println("Where would you like to move? (Choose W, A, S, D)");
+				String move = in.nextLine();
+				if (validMove(move, player1, building)) {
+					System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
+
+				} else {
+					System.out.println("Please choose a valid move.");
+				}
 			}
 			
 			

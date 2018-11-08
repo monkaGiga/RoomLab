@@ -7,7 +7,7 @@ public class Person {
 	String firstName;
 	String familyName;
 	int xLoc, yLoc;
-
+	public boolean trapCheck = false;
 	public int getxLoc() {
 		return xLoc;
 	}
