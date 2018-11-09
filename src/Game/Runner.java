@@ -31,7 +31,7 @@ public class Runner {
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
-		building[0][1] = new WinningRoom(0, 1);
+		building[x][y] = new WinningRoom(x, y);
 		//Create a room where you die
 		double droom = (Math.random()*10);
 		if(droom >= 9) {
